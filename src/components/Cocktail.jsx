@@ -18,7 +18,9 @@ const Cocktail = (cocktail) => {
         <h3>{name}</h3>
         <h4>{cat}</h4>
         <p>{alc} </p>
-        <Link to={`/${id}`}> Details</Link>
+        <Link to={`/${id}`} className="btn-details btn-primary btn">
+          Details
+        </Link>
       </div>
     </article>
   )
