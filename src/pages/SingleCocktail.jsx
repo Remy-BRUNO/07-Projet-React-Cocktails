@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom"
-import { useLoaderData } from "react-router-dom"
-import Loading from "../components/Loading"
-import { useNavigation } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
+
 const SingleCocktail = () => {
   const datas = useLoaderData()
   const cocktail = datas.drinks
-  const navigation = useNavigation()
+
   const {
     strDrink: name,
     strCategory: cat,
@@ -20,9 +18,7 @@ const SingleCocktail = () => {
     }
   })
 
-  return navigation.state === "loading" ? (
-    <Loading />
-  ) : (
+  return (
     <section className="section cocktail-section">
       <Link to="/" className="btn-primary">
         back home

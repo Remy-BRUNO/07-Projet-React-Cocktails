@@ -15,12 +15,12 @@ const SearchForm = ({ setSearch }) => {
   }
   return (
     <section className="section search">
-      <Form className="search-form" onSubmit={handleSubmit}>
+      <form role="search" className="search-form" onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="">Search Your Favorite Cocktail</label>
-          <input value={text} type="text" onChange={handleChange} />
+          <input value={text} type="search" onChange={handleChange} name="s" />
         </div>
-      </Form>
+      </form>
     </section>
   )
 }

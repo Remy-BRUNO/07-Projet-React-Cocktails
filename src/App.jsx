@@ -12,6 +12,11 @@ import {
 function App() {
   const [search, setSearch] = useState("")
 
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`
+
+  let params = new URLSearchParams(url)
+  params.set("s", search)
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -20,11 +25,9 @@ function App() {
       children: [
         {
           index: true,
-          element: <Home setSearch={setSearch} />,
+          element: <Home setSearch={setSearch} params={params} />,
           loader: async () => {
-            const res = await fetch(
-              `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`
-            )
+            const res = await fetch(decodeURIComponent(params.toString()))
             return res.json()
           },
         },

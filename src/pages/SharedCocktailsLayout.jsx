@@ -1,11 +1,12 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigation } from "react-router-dom"
 import Navbar from "../components/Navbar"
-
+import Loading from "../components/Loading"
 const SharedCocktailsLayout = () => {
+  const navigation = useNavigation()
   return (
     <>
       <Navbar />
-      <Outlet />
+      {navigation.state === "loading" ? <Loading /> : <Outlet />}
     </>
   )
 }
