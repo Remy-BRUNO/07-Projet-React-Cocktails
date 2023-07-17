@@ -2,15 +2,13 @@ import { useLoaderData } from "react-router-dom"
 import CocktailList from "../components/CocktailList"
 import SearchForm from "../components/SearchForm"
 
-const Home = ({ setSearch }) => {
-  const datas = useLoaderData()
-
-  const cocktails = datas.drinks
+const Home = () => {
+  const { drinks, searchTerm } = useLoaderData()
 
   return (
     <main>
-      <SearchForm setSearch={setSearch} />
-      <CocktailList cocktails={cocktails} />
+      <SearchForm searchTerm={searchTerm} />
+      <CocktailList cocktails={drinks} />
     </main>
   )
 }

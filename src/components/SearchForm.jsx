@@ -1,26 +1,22 @@
 import { useEffect, useState } from "react"
-import { Form } from "react-router-dom"
+import { Form, useSubmit } from "react-router-dom"
 
-const SearchForm = ({ setSearch }) => {
-  const [text, setText] = useState("")
-  const handleChange = (e) => {
-    setText(e.target.value)
-  }
-  useEffect(() => {
-    setSearch(text)
-  }, [text])
+const SearchForm = ({ searchTerm }) => {
+  const submit = useSubmit()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
   return (
     <section className="section search">
-      <form role="search" className="search-form" onSubmit={handleSubmit}>
+      <Form role="search" className="search-form">
         <div className="form-control">
           <label htmlFor="">Search Your Favorite Cocktail</label>
-          <input value={text} type="search" onChange={handleChange} name="s" />
+          <input
+            defaultValue={searchTerm}
+            type="search"
+            onChange={(e) => submit(e.currentTarget.form)}
+            name="s"
+          />
         </div>
-      </form>
+      </Form>
     </section>
   )
 }
